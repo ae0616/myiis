@@ -6,4 +6,4 @@
 
 include_recipe 'myiis::server'
 
-include_recipe 'myiis::static-file'
+#include_recipe 'myiis::static-file'
