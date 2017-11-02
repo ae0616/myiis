@@ -5,7 +5,11 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
 powershell_script 'install-iis' do 
-	code 'Add-WindowsFeature Web-Server'
+	code <<EOF
+	Add-WindowsFeature Web-Server
+EOF
+	guard_interpreter :powershell_script
+	not_if "(Get-WindowsFeature -Name Web-Server).installed"
 end
 
 directory 'C:\inetpub\wwwroot' do
